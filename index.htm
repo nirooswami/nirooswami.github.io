@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiplication</title>
+    <style>
+      div {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 28px;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        margin: auto;
+        text-align: right;
+        font-family: Consolas, Courier, monospace;
+        font-size: 32px;
+        font-weight: bold;
+        width: 300px;
+       margin-top: 60px;
+       letter-spacing: 5px;
+        /* word-spacing: 4px; */
+      }
+      button {
+        left: 50%;
+        position: relative;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 48px;
+      }
+
+      #n2::before {
+        content: "x  ";
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p id="n1">1234</p>
+      <p id="n2">1234</p>
+
+      <p id="r1" style="text-decoration: overline; visibility: hidden">1234</p>
+      <p id="r2" style="visibility: hidden">1234</p>
+      <p id="r3" style="visibility: hidden">1234</p>
+      <p id="r" style="text-decoration: overline underline; visibility: hidden">
+        1234
+      </p>
+    </main>
+
+    <button
+      onclick="this.style.display='none'; document.getElementById('r1').style.visibility = 'visible'; document.getElementById('r2').style.visibility = 'visible'; document.getElementById('r3').style.visibility = 'visible'; document.getElementById('r').style.visibility = 'visible'; document.getElementById('nn').style.visibility = 'visible';"
+    >
+      Show Answer
+    </button>
+
+    <button id="nn" onclick="location.reload()" style="visibility: hidden">
+      Next Question
+    </button>
+
+    <script>
+      let a = Math.floor(Math.random() * 9899) + 100;
+      let b = Math.floor(Math.random() * 989) + 10;
+      let x = a * (b % 10);
+      let y = a * (Math.floor(b / 10) % 10);
+      let z = a * Math.floor(b / 100);
+      if (z == 0) document.getElementById("r3").style.display = "none";
+
+      let c = a * b;
+      document.getElementById("n1").innerText = a;
+      document.getElementById("n2").innerText = b;
+
+      document.getElementById("r1").innerText = x;
+      document.getElementById("r2").innerText = y + "x";
+      document.getElementById("r3").innerText = z + "xx";
+      document.getElementById("r").innerText = c;
+    </script>
+  </body>
+</html>
