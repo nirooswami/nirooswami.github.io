@@ -8,9 +8,11 @@
   <body>
     <p id="stat"></p>
     <button id="button" onclick="createOffer()">Offer:</button>
+    <button id="DDD" onclick="sData()">Connect</button>
     <textarea
       id="offer"
       placeholder="Paste offer here. And press Enter"
+      name="k"
     ></textarea>
     Answer: <textarea id="answer"></textarea><br />
     Chat: <input id="chat" /><br />
@@ -19,6 +21,17 @@
     <script src="main.js"></script>
     <script>
       // createOffer();
+      function sData() {
+        let formData = new FormData();
+        formData.append("k", "John");
+
+        fetch("//niroo.rf.gd/c.php", {
+          body: formData,
+          method: "post",
+        }).then((response) => {
+          console.log(response);
+        });
+      }
     </script>
   </body>
 </html>
