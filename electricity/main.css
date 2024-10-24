@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+.con {
+  background-color: rgb(240, 240, 240);
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  justify-content: space-around;
+  width: 50%;
+  padding: 15px 0;
+  flex-wrap: wrap;
+
+  margin-top: 90px;
+
+  position: absolute;
+  animation: movecon 24s infinite linear;
+}
+
+.con2 {
+  background-color: rgb(220, 220, 220);
+  left: 50%;
+  animation: movecon 24s -16s infinite linear;
+  /* animation: movecon 21s infinite linear; */
+}
+
+.con3 {
+  background-color: rgb(200, 200, 200);
+  left: -50%;
+  animation: movecon 24s -8s infinite linear;
+  /* animation: movecon 21s infinite linear; */
+}
+
+p.shape {
+  /* border: 2px solid purple; */
+  border-radius: 4px;
+  width: 50px;
+  /* padding: 4px 0; */
+  text-align: center;
+  overflow-x: visible;
+  white-space: nowrap;
+  font-weight: bold;
+  background-color: rgb(250, 248, 163);
+}
+
+p.shape > span:first-child {
+  font-size: 24px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid purple;
+  display: block;
+  color: rgb(241, 56, 0);
+}
+
+p.shape > span:last-child {
+  font-size: 16px;
+  padding-top: 4px;
+  background-color: white;
+  width: 100%;
+  display: inline-block;
+  color: brown;
+  padding-bottom: 5px;
+}
+
+.roundbtn {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.ss {
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+@keyframes movecon {
+  0% {
+    left: -50%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
