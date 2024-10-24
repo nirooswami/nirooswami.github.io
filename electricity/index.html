@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Electricity</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <!-- <body style="transform: scale(2) translateY(25%)"> -->
+  <body>
+    <div class="con" id="c1">
+      <!-- <p class="shape">1J</p> -->
+    </div>
+
+    <div class="con con2" id="c2">
+      <!-- <p class="shape">1J</p> -->
+    </div>
+
+    <div class="con con3" id="c3">
+      <!-- <p class="shape">1J</p> -->
+    </div>
+
+    <br /><br />
+    <span class="ss">Time: </span><span id="TT" class="ss">0</span
+    ><span class="ss">s</span>
+
+    <br /><br /><br /><br /><br /><br /><br /><br />
+    <button onclick="increaseV()" class="roundbtn">+</button>
+    <span id="VV" class="ss">1</span><span class="ss">V</span>
+    <button onclick="decreaseV()" class="roundbtn">&minus;</button>
+    <br /><br />
+    <button onclick="increaseR()" class="roundbtn">+</button>
+    <span id="RR" class="ss">1</span><span class="ss">&ohm;</span>
+    <button onclick="decreaseR()" class="roundbtn">&minus;</button>
+    <br /><br />
+    <span class="ss">Current: </span><span id="II" class="ss">1</span
+    ><span class="ss">A</span> <br /><br />
+    <span class="ss">Power: </span><span id="PP" class="ss">1</span
+    ><span class="ss">W</span> <br /><br />
+    <span class="ss">Heat: </span><span id="HH" class="ss">1</span
+    ><span class="ss">J</span>
+
+    <script>
+      c1 = document.getElementById("c1");
+      c2 = document.getElementById("c2");
+      c3 = document.getElementById("c3");
+
+      let V = 0;
+      let R = 1;
+      let I = 1;
+      let p = 0;
+      let f = 0;
+      let TX = 0;
+
+      let TTT = document.getElementById("TT");
+      let TTX = document.getElementById("HH");
+
+      let CLKX;
+
+      function increaseV() {
+        ++V;
+        reCreate();
+      }
+      function decreaseV() {
+        if (!(V > 1)) return;
+
+        --V;
+        reCreate();
+      }
+
+      function increaseR() {
+        ++R;
+        reCreate();
+      }
+
+      function decreaseR() {
+        if (!(R > 1)) return;
+        --R;
+        reCreate();
+      }
+
+      function reCreate() {
+        I = parseFloat(V / R).toFixed(1);
+        NN = Math.ceil(parseFloat(I).toFixed(1));
+
+        TT =
+          '<p class="shape"><span>' +
+          V +
+          " J" +
+          "</span><span>" +
+          "1" +
+          " C</span></p>";
+        FF = (I - parseInt(I)).toFixed(1);
+
+        if (FF > 0) {
+          TT = TT.repeat(NN - 1);
+          TT +=
+            '<p class="shape" style="width:' +
+            parseInt(FF * 50) +
+            'px"><span>' +
+            (FF * V).toFixed(1) +
+            " J" +
+            "</span><span>" +
+            FF +
+            " C</span></p>";
+        } else {
+          TT = TT.repeat(NN);
+        }
+        let PPP = parseFloat(V * I).toFixed(1);
+        document.getElementById("VV").innerHTML = V;
+        document.getElementById("RR").innerHTML = R;
+        document.getElementById("II").innerHTML = I;
+        document.getElementById("PP").innerHTML = PPP;
+
+        TX = 0;
+        TTT.innerHTML = parseFloat(0).toFixed(1);
+        TTX.innerHTML = parseFloat(0).toFixed(1);
+
+        clearInterval(CLKX);
+
+        CLKX = setInterval(function () {
+          TX += 0.1;
+          TTT.innerHTML = parseFloat(TX).toFixed(1);
+          TTX.innerHTML = parseFloat(PPP * TX).toFixed(1);
+        }, 800); // 8 seconds = 1 slab
+
+        c1.innerHTML = TT;
+        c2.innerHTML = TT;
+        c3.innerHTML = TT;
+      }
+
+      increaseV();
+    </script>
+  </body>
+</html>
